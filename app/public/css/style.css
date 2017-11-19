@@ -79,3 +79,31 @@ margin-top: 5px;
 font-size: 11px;
 text-align: center;
 }
+
+.nome-cliente{
+font-size: 40px;
+color: white;
+font-family: "Times New Roman", Times, serif;
+}
+
+.show-dins{
+	height: 50%;
+}
+
+.debito{
+    position: relative;
+    padding:0 !important;
+    background: #EC5F5F;
+    margin-top: 23px;
+    text-align:center;
+    margin-bottom: 0 !important;
+}
+
+.credito{
+    position: relative;
+    padding:0 !important;
+    background: #49CE49;
+    margin-top: 23px;
+    text-align:center;
+    margin-bottom: 0 !important;
+}

@@ -2,6 +2,8 @@ function UsuariosDAO(connection){
     this._connection = connection();
 }
 
+//INSERIR USUARIO
+
 UsuariosDAO.prototype.inserirUsuario = function(usuario){
     this._connection.open(function(err, mongoclient){
         mongoclient.collection("usuarios", function(err, collection){
@@ -10,6 +12,8 @@ UsuariosDAO.prototype.inserirUsuario = function(usuario){
         });
     });
 }
+
+//AUTENTICA LOGIN
 
 UsuariosDAO.prototype.autenticar = function(usuario,req,res,errosValidacao){
     this._connection.open(function(error,mongoclient){
@@ -21,8 +25,9 @@ UsuariosDAO.prototype.autenticar = function(usuario,req,res,errosValidacao){
                                 if(results[0] != undefined){
 
                                     req.session.autorizado = true;
-                                    req.session.usuario = results[0].usuario;
-                                    req.session.casa = results[0].casa;
+                                    req.session.usuario = results[0].usuario
+                                    req.session.nome = results[0].nome;
+
 
                                 }
 
@@ -30,6 +35,7 @@ UsuariosDAO.prototype.autenticar = function(usuario,req,res,errosValidacao){
                                     res.render('index', {validacao: errosValidacao})
                                     
                                 } else {
+                                    
                                     res.redirect("dashboard");
                                 }
 
@@ -43,3 +49,4 @@ UsuariosDAO.prototype.autenticar = function(usuario,req,res,errosValidacao){
 module.exports = function(){
     return UsuariosDAO;
 }
+
